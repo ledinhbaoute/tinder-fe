@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import OnboardingScreen from './components/OnboardingScreen';
-import * as Font from 'expo-font';
+import InputPhoneScreen from './components/InputPhoneScreen';
 
 const Stack = createStackNavigator();
 
@@ -17,6 +17,7 @@ export default function App() {
         }}
       >
         <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
+        <Stack.Screen name="InputPhoneScreen" component={InputPhoneScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
