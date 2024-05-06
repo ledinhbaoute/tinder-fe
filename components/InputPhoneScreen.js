@@ -19,6 +19,12 @@ const InputPhoneScreen = ({ navigation }) => {
   const handleSelectedCountry = country => {
     setSelectedCountry(country);
   };
+
+  const gotoOTPScreen = () => {
+    navigation.navigate('InputOTPScreen', {
+      phoneNumber: `${selectedCountry?.callingCode} ${inputValue}`,
+    });
+  };
   return (
     <SafeAreaView>
       <View className="container px-3">
@@ -88,7 +94,7 @@ const InputPhoneScreen = ({ navigation }) => {
             may apply. Learn what happens when your number changes.
           </Text>
           <View className="flex justify-center items-center mt-16">
-            <LinearGradientButton onPress={() => {}} title={'CONTINUE'} />
+            <LinearGradientButton onPress={gotoOTPScreen} title={'CONTINUE'} />
           </View>
         </View>
       </View>
