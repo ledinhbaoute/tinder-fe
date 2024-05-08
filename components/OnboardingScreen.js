@@ -19,7 +19,7 @@ const OnboardingScreen = ({ navigation }) => {
           <View className="flex-row h-80 justify-center items-end">
             <Image source={require('../assets/img/logo2.png')} />
           </View>
-          <Text className="color-white font-inter text-center text-xs mt-16">
+          <Text className="color-white text-center text-xs mt-16">
             By tapping Create Account or Sign In, you agree to our Terms. Learn
             how we process your data in our Privacy Policy and Cookies Policy.
           </Text>

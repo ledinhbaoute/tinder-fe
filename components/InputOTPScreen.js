@@ -1,11 +1,19 @@
-import { Text, View, TextInput, Keyboard, StyleSheet } from 'react-native';
+import {
+  Text,
+  View,
+  TextInput,
+  Keyboard,
+  StyleSheet,
+  Alert,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ChevronLeftIcon } from 'react-native-heroicons/solid';
 import LinearGradientButton from './button/LinearGradientButton';
 import { useState, useRef, useEffect } from 'react';
+import { verifyOTP } from '../helpers/handleAuth';
 
 const InputOTPScreen = ({ route, navigation }) => {
-  const { phoneNumber } = route.params;
+  const { phoneNumber, pinId } = route.params;
 
   const [otp, setOTP] = useState(['', '', '', '', '', '']);
   const otpInputs = useRef([]);
@@ -20,6 +28,20 @@ const InputOTPScreen = ({ route, navigation }) => {
     setOTP(newOTP);
     if (index < otpInputs.current.length - 1 && text !== '') {
       otpInputs.current[index + 1].focus();
+    }
+  };
+
+  const handleVerifyOTP = async (pin, pinId) => {
+    try {
+      const response = await verifyOTP({ pin, pinId });
+      if (response.data.success) {
+        Alert.alert(response.data.message);
+        navigation.navigate('HomeScreen');
+      } else {
+        Alert.alert(response.data.message);
+      }
+    } catch (error) {
+      throw error;
     }
   };
 
@@ -63,7 +85,10 @@ const InputOTPScreen = ({ route, navigation }) => {
             ))}
           </View>
           <View className="flex justify-center items-center mt-16">
-            <LinearGradientButton onPress={() => {}} title={'CONTINUE'} />
+            <LinearGradientButton
+              onPress={() => handleVerifyOTP(otp.join(''), pinId)}
+              title={'CONTINUE'}
+            />
           </View>
         </View>
       </View>
