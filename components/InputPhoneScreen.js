@@ -1,10 +1,11 @@
-import { Text, View, TextInput } from 'react-native';
+import { Text, View, TextInput, Alert } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ChevronLeftIcon } from 'react-native-heroicons/solid';
 import LinearGradientButton from './button/LinearGradientButton';
 import { useState } from 'react';
 import PhoneInput from 'react-native-international-phone-number';
 import colors from '../theme/colors';
+import { sendOTP } from '../helpers/handleAuth';
 
 const InputPhoneScreen = ({ navigation }) => {
   const [number, setNumber] = useState('');
@@ -18,6 +19,25 @@ const InputPhoneScreen = ({ navigation }) => {
 
   const handleSelectedCountry = country => {
     setSelectedCountry(country);
+  };
+
+  const gotoOTPScreen = async () => {
+    try {
+      const response = await sendOTP(
+        `${selectedCountry?.callingCode}${inputValue}`
+      );
+      if (response.data.success) {
+        navigation.navigate('InputOTPScreen', {
+          phoneNumber: `${selectedCountry?.callingCode} ${inputValue}`,
+          pinId: response.data.data,
+        });
+      } else {
+        Alert.alert('Send OTP fail. Check your phone number.');
+      }
+    } catch (error) {
+      Alert.alert('Send OTP fail. Check your phone number.');
+      throw error;
+    }
   };
   return (
     <SafeAreaView>
@@ -88,7 +108,7 @@ const InputPhoneScreen = ({ navigation }) => {
             may apply. Learn what happens when your number changes.
           </Text>
           <View className="flex justify-center items-center mt-16">
-            <LinearGradientButton onPress={() => {}} title={'CONTINUE'} />
+            <LinearGradientButton onPress={gotoOTPScreen} title={'CONTINUE'} />
           </View>
         </View>
       </View>
