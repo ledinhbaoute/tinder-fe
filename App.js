@@ -6,6 +6,9 @@ import OnboardingScreen from './components/OnboardingScreen';
 import InputPhoneScreen from './components/InputPhoneScreen';
 import InputOTPScreen from './components/InputOTPScreen';
 import HomeScreen from './components/HomeScreen';
+import NameEntryScreen from './components/NameEntryScreen';
+import BirthdayEntryScreen from './components/BirthdayEntryScreen';
+import SelectGenderScreen from './components/SelectGenderScreen';
 
 const Stack = createStackNavigator();
 
@@ -13,7 +16,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="OnboardingScreen"
+        initialRouteName="NameEntryScreen"
         screenOptions={{
           headerShown: false,
         }}
@@ -22,6 +25,15 @@ export default function App() {
         <Stack.Screen name="InputPhoneScreen" component={InputPhoneScreen} />
         <Stack.Screen name="InputOTPScreen" component={InputOTPScreen} />
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
+        <Stack.Screen name="NameEntryScreen" component={NameEntryScreen} />
+        <Stack.Screen
+          name="BirthdayEntryScreen"
+          component={BirthdayEntryScreen}
+        />
+        <Stack.Screen
+          name="SelectGenderScreen"
+          component={SelectGenderScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
