@@ -1,5 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import OnboardingScreen from './components/OnboardingScreen';
@@ -9,6 +7,7 @@ import HomeScreen from './components/HomeScreen';
 import NameEntryScreen from './components/NameEntryScreen';
 import BirthdayEntryScreen from './components/BirthdayEntryScreen';
 import SelectGenderScreen from './components/SelectGenderScreen';
+import SelectInterestScreen from './components/SelectInterestScreen';
 
 const Stack = createStackNavigator();
 
@@ -33,6 +32,10 @@ export default function App() {
         <Stack.Screen
           name="SelectGenderScreen"
           component={SelectGenderScreen}
+        />
+        <Stack.Screen
+          name="SelectInterestScreen"
+          component={SelectInterestScreen}
         />
       </Stack.Navigator>
     </NavigationContainer>

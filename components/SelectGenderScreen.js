@@ -1,6 +1,6 @@
-import { Text, View, TextInput, Alert, StyleSheet } from 'react-native';
+import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { ChevronLeftIcon, XMarkIcon } from 'react-native-heroicons/solid';
+import { ChevronLeftIcon } from 'react-native-heroicons/solid';
 import LinearGradientButton from './button/LinearGradientButton';
 import Checkbox from 'expo-checkbox';
 import { useEffect, useState } from 'react';
@@ -39,7 +39,7 @@ const SelectGenderScreen = ({ route, navigation }) => {
   };
 
   const gotoInterestScreen = () => {
-    navigation.navigate('HomeScreen', {
+    navigation.navigate('SelectInterestScreen', {
       name: name,
       birthday: birthday,
       gender: gender,
