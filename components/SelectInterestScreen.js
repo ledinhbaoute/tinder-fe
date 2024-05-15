@@ -33,8 +33,18 @@ const SelectInterestScreen = ({ route, navigation }) => {
     if (selectedInterest.length >= 3 && selectedInterest.length <= 5)
       setIsDisabled(false);
     else setIsDisabled(true);
-    console.log(selectedInterest);
   }, [selectedInterest]);
+
+  const gotoUploadPhotoScreen = () => {
+    navigation.navigate('UploadPhotoScreen', {
+      name,
+      birthday,
+      gender,
+      isShowGender,
+      selectedInterest,
+    });
+  };
+
   return (
     <SafeAreaView>
       <View className="container flex px-3">
@@ -74,7 +84,7 @@ const SelectInterestScreen = ({ route, navigation }) => {
           </ScrollView>
           <View className="flex justify-center items-center mt-1">
             <LinearGradientButton
-              onPress={() => {}}
+              onPress={gotoUploadPhotoScreen}
               title={`CONTINUE ${selectedInterest.length}/5`}
               isDisabled={isDisabled}
             />
