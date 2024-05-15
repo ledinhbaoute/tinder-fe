@@ -13,7 +13,7 @@ import {
 } from '../helpers/daytimeFormat';
 
 const BirthdayEntryScreen = ({ route, navigation }) => {
-  const { name } = route.params;
+  const { name, phoneNumber } = route.params;
 
   const [birthday, setBirthday] = useState(['', '', '']);
   const [isDisabled, setIsDisabled] = useState(true);
@@ -41,6 +41,7 @@ const BirthdayEntryScreen = ({ route, navigation }) => {
         navigation.navigate('SelectGenderScreen', {
           name: name,
           birthday: birthday,
+          phoneNumber: phoneNumber,
         });
     } else Alert.alert('Invalid date');
   };

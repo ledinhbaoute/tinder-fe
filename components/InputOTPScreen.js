@@ -36,7 +36,7 @@ const InputOTPScreen = ({ route, navigation }) => {
       const response = await verifyOTP({ pin, pinId });
       if (response.data.success) {
         Alert.alert(response.data.message);
-        navigation.navigate('HomeScreen');
+        navigation.navigate('NameEntryScreen', { phoneNumber });
       } else {
         Alert.alert(response.data.message);
       }

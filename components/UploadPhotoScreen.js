@@ -1,23 +1,12 @@
-import {
-  Text,
-  View,
-  Button,
-  TextInput,
-  Alert,
-  StyleSheet,
-  ScrollView,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
+import { Text, View, Alert, Image, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { ChevronLeftIcon, XCircleIcon } from 'react-native-heroicons/solid';
+import { ChevronLeftIcon } from 'react-native-heroicons/solid';
 import { XMarkIcon, PlusIcon } from 'react-native-heroicons/mini';
 import LinearGradientButton from './button/LinearGradientButton';
 import { useEffect, useState } from 'react';
 import colors from '../theme/colors';
 import FixedProgressBar from './bar/FixedProgressBar';
-import SelectableButton from './button/SelectableButton';
-import { interests } from '../constants/interests';
+
 import * as ImagePicker from 'expo-image-picker';
 import MaskedView from '@react-native-masked-view/masked-view';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -65,6 +54,18 @@ const UploadPhotoScreen = ({ route, navigation }) => {
       ],
       { cancelable: false }
     );
+  };
+
+  const gotoHouseRulesScreen = () => {
+    navigation.navigate('HouseRulesScreen', {
+      name,
+      birthday,
+      gender,
+      isShowGender,
+      selectedInterest,
+      images,
+      phoneNumber,
+    });
   };
 
   return (
@@ -144,7 +145,7 @@ const UploadPhotoScreen = ({ route, navigation }) => {
         </View>
         <View className="flex justify-center items-center mt-16">
           <LinearGradientButton
-            onPress={() => {}}
+            onPress={gotoHouseRulesScreen}
             title={'CONTINUE'}
             isDisabled={isDisabled}
           />

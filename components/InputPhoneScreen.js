@@ -5,7 +5,7 @@ import LinearGradientButton from './button/LinearGradientButton';
 import { useState } from 'react';
 import PhoneInput from 'react-native-international-phone-number';
 import colors from '../theme/colors';
-import { sendOTP } from '../helpers/handleAuth';
+import { sendOTP, checkRegistedPhoneNumber } from '../helpers/handleAuth';
 
 const InputPhoneScreen = ({ navigation }) => {
   const [number, setNumber] = useState('');
@@ -23,16 +23,23 @@ const InputPhoneScreen = ({ navigation }) => {
 
   const gotoOTPScreen = async () => {
     try {
-      const response = await sendOTP(
-        `${selectedCountry?.callingCode}${inputValue}`
+      const isRegistedPhone = await checkRegistedPhoneNumber(
+        `${selectedCountry?.callingCode} ${inputValue}`
       );
-      if (response.data.success) {
-        navigation.navigate('InputOTPScreen', {
-          phoneNumber: `${selectedCountry?.callingCode} ${inputValue}`,
-          pinId: response.data.data,
-        });
+      if (isRegistedPhone.data.success === false) {
+        const response = await sendOTP(
+          `${selectedCountry?.callingCode}${inputValue}`
+        );
+        if (response.data.success) {
+          navigation.navigate('InputOTPScreen', {
+            phoneNumber: `${selectedCountry?.callingCode} ${inputValue}`,
+            pinId: response.data.data,
+          });
+        } else {
+          Alert.alert('Send OTP fail. Check your phone number.');
+        }
       } else {
-        Alert.alert('Send OTP fail. Check your phone number.');
+        Alert.alert('Your phone number already registed');
       }
     } catch (error) {
       Alert.alert('Send OTP fail. Check your phone number.');
