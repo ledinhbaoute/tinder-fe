@@ -6,7 +6,8 @@ import { useState } from 'react';
 import colors from '../theme/colors';
 import FixedProgressBar from './bar/FixedProgressBar';
 
-const NameEntryScreen = ({ navigation }) => {
+const NameEntryScreen = ({ route, navigation }) => {
+  const { phoneNumber } = route.params;
   const [name, setName] = useState('');
   const [isDisabled, setIsDisabled] = useState(true);
 
@@ -17,7 +18,10 @@ const NameEntryScreen = ({ navigation }) => {
   };
 
   const gotoGenderScreen = () => {
-    navigation.navigate('BirthdayEntryScreen', { name: name });
+    navigation.navigate('BirthdayEntryScreen', {
+      name: name,
+      phoneNumber: phoneNumber,
+    });
   };
   return (
     <SafeAreaView>

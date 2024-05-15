@@ -9,7 +9,7 @@ import FixedProgressBar from './bar/FixedProgressBar';
 import SelectableButton from './button/SelectableButton';
 
 const SelectGenderScreen = ({ route, navigation }) => {
-  const { name, birthday } = route.params;
+  const { name, birthday, phoneNumber } = route.params;
 
   const [gender, setGender] = useState('');
   const [isMaleSelected, setIsMaleSelected] = useState(false);
@@ -44,6 +44,7 @@ const SelectGenderScreen = ({ route, navigation }) => {
       birthday: birthday,
       gender: gender,
       isShowGender: isShowGender,
+      phoneNumber: phoneNumber,
     });
   };
 

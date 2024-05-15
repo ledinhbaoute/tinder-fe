@@ -9,6 +9,8 @@ import BirthdayEntryScreen from './components/BirthdayEntryScreen';
 import SelectGenderScreen from './components/SelectGenderScreen';
 import SelectInterestScreen from './components/SelectInterestScreen';
 import UploadPhotoScreen from './components/UploadPhotoScreen';
+import HouseRulesScreen from './components/HouseRulesScreen';
+import WelcomeScreen from './components/WelcomeScreen';
 
 const Stack = createStackNavigator();
 
@@ -16,7 +18,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="NameEntryScreen"
+        initialRouteName="OnboardingScreen"
         screenOptions={{
           headerShown: false,
         }}
@@ -39,6 +41,8 @@ export default function App() {
           component={SelectInterestScreen}
         />
         <Stack.Screen name="UploadPhotoScreen" component={UploadPhotoScreen} />
+        <Stack.Screen name="HouseRulesScreen" component={HouseRulesScreen} />
+        <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

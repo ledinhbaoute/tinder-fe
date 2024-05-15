@@ -42,6 +42,7 @@ const SelectInterestScreen = ({ route, navigation }) => {
       gender,
       isShowGender,
       selectedInterest,
+      phoneNumber,
     });
   };
 
