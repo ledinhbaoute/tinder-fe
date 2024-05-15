@@ -7,10 +7,10 @@ module.exports = {
         satoshi: ['Satoshi', 'sans-serif'],
         inter: ['Inter', 'sans-serif'],
       },
-    },
-    colors: {
-      'selected-btn': '#EA5B6E',
-      'unselected-btn': '#DEE0E7',
+      colors: {
+        'selected-btn': '#EA5B6E',
+        'unselected-btn': '#DEE0E7',
+      },
     },
   },
   plugins: [],

@@ -8,6 +8,7 @@ import NameEntryScreen from './components/NameEntryScreen';
 import BirthdayEntryScreen from './components/BirthdayEntryScreen';
 import SelectGenderScreen from './components/SelectGenderScreen';
 import SelectInterestScreen from './components/SelectInterestScreen';
+import UploadPhotoScreen from './components/UploadPhotoScreen';
 
 const Stack = createStackNavigator();
 
@@ -37,6 +38,7 @@ export default function App() {
           name="SelectInterestScreen"
           component={SelectInterestScreen}
         />
+        <Stack.Screen name="UploadPhotoScreen" component={UploadPhotoScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
